@@ -468,5 +468,41 @@ cargo.rust_binary(
     crate_root = "top/main.rs",
     edition = "2021",
     visibility = [],
-    deps = [":rand-0.8.5"],
+    deps = [
+        ":rand-0.8.5",
+        ":semver-1.0.21",
+    ],
+)
+
+alias(
+    name = "semver",
+    actual = ":semver-1.0.21",
+    visibility = ["PUBLIC"],
+)
+
+cargo.rust_library(
+    name = "semver-1.0.21",
+    srcs = [
+        "vendor/semver-1.0.21/src/backport.rs",
+        "vendor/semver-1.0.21/src/display.rs",
+        "vendor/semver-1.0.21/src/error.rs",
+        "vendor/semver-1.0.21/src/eval.rs",
+        "vendor/semver-1.0.21/src/identifier.rs",
+        "vendor/semver-1.0.21/src/impls.rs",
+        "vendor/semver-1.0.21/src/lib.rs",
+        "vendor/semver-1.0.21/src/parse.rs",
+        "vendor/semver-1.0.21/src/serde.rs",
+    ],
+    crate = "semver",
+    crate_root = "vendor/semver-1.0.21/src/lib.rs",
+    edition = "2018",
+    features = [
+        "default",
+        "std",
+    ],
+    licenses = [
+        "vendor/semver-1.0.21/LICENSE-APACHE",
+        "vendor/semver-1.0.21/LICENSE-MIT",
+    ],
+    visibility = [],
 )

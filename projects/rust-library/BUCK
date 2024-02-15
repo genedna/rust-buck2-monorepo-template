@@ -1,0 +1,9 @@
+rust_library(
+    name = "rust-library",
+    srcs = glob(["src/**/*.rs"]),
+    crate_root = "src/lib.rs",
+    deps = [
+        "//third-party:semver"
+    ],
+    visibility = ["PUBLIC"],
+)

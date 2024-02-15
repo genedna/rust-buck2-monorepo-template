@@ -3,6 +3,7 @@ rust_binary(
     srcs = glob(["src/**/*.rs"]),
     crate_root = "src/main.rs",
     deps = [
-        "//third-party:rand"
+        "//third-party:rand",
+        "//projects/rust-library:rust-library",
     ]
 )
