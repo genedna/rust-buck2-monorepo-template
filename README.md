@@ -199,6 +199,7 @@ A random value: 3596158885
 
 - [使用 Buck2 编译构建 Rust 工程](https://maquanyi.com/articles/buck2-rust-hello-world)
 - [使用 Reindeer 生成 Rust 项目 BUCK](https://maquanyi.com/articles/buck2-rust-reindeer)
+- [使用 Buck2 和 Reindeer 构建 Rust Monorepo 工程](https://maquanyi.com/articles/buck2-rust-reindeer-monorepo)
 
 ### 2. References 
 
