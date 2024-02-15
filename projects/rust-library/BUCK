@@ -1,9 +1,22 @@
+shared_deps = [
+    "//third-party:semver",
+]
+
 rust_library(
     name = "rust-library",
     srcs = glob(["src/**/*.rs"]),
     crate_root = "src/lib.rs",
-    deps = [
-        "//third-party:semver"
+    tests = [
+        "//projects/rust-library:rust-library-test",
     ],
+    deps = shared_deps,
+    visibility = ["PUBLIC"],
+)
+
+rust_test(
+    name = "rust-library-test",
+    srcs = glob(["src/**/*.rs"]),
+    crate_root = "src/lib.rs",
+    deps = shared_deps,
     visibility = ["PUBLIC"],
 )

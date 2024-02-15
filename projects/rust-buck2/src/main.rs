@@ -19,3 +19,14 @@ fn main() {
         false => println!("0.3.0 >= 1.0.0: false"),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_version_match() {
+        assert_eq!(version_match("1.0.0", ">= 1.0.0"), true);
+        assert_eq!(version_match("0.3.0", ">= 1.0.0"), false);
+    }
+}

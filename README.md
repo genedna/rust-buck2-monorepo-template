@@ -187,6 +187,65 @@ A random value: 3596158885
 0.3.0 >= 1.0.0: false
 ```
 
+### 7. 使用 Buck2 执行 Rust 单元测试
+
+在 `toolchains` 目录下的 `BUCK` 文件加入 `remote_test_execution_toolchain`，
+
+```rust
+load("@prelude//toolchains:remote_test_execution.bzl", "remote_test_execution_toolchain")
+
+remote_test_execution_toolchain(
+    name = "remote_test_execution",
+    visibility = ["PUBLIC"],
+)
+```
+
+因为 `rust_library` 和 `rust_test` 都要用相同的 `deps`， 所以在 `rust_library` 中加入 `shared_deps` 避免重复，
+
+```rust
+shared_deps = [
+    "//third-party:semver",
+]
+
+rust_library(
+    name = "rust-library",
+    srcs = glob(["src/**/*.rs"]),
+    crate_root = "src/lib.rs",
+    tests = [
+        "//projects/rust-library:rust-library-test",
+    ],
+    deps = shared_deps,
+    visibility = ["PUBLIC"],
+)
+
+rust_test(
+    name = "rust-library-test",
+    srcs = glob(["src/**/*.rs"]),
+    crate_root = "src/lib.rs",
+    deps = shared_deps,
+    visibility = ["PUBLIC"],
+)
+```
+
+执行 `buck2 test` 命令进行测试，
+
+```bash
+$ buck2 test //...
+✓ Pass: root//projects/rust-library:rust-library-test (0.0s)
+---- STDOUT ----
+
+running 1 test
+test tests::version_match_works ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+---- STDERR ----
+
+Build ID: dbc61ebd-700f-49a4-8d33-28d5bd535051
+Jobs completed: 4. Time elapsed: 0.0s.
+Tests finished: Pass 1. Fail 0. Fatal 0. Skip 0. Build failure 0
+```
 
 ---
 

@@ -1,9 +1,19 @@
+shared_deps = [
+    "//third-party:rand",
+    "//projects/rust-library:rust-library",
+]
+
 rust_binary(
     name = "rust-buck2",
     srcs = glob(["src/**/*.rs"]),
     crate_root = "src/main.rs",
-    deps = [
-        "//third-party:rand",
-        "//projects/rust-library:rust-library",
-    ]
+    deps = shared_deps,
+)
+
+rust_test(
+    name = "rust-buck2-test",
+    srcs = glob(["src/**/*.rs"]),
+    crate_root = "src/main.rs",
+    deps = shared_deps,
+    visibility = ["PUBLIC"],
 )
