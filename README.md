@@ -1,5 +1,13 @@
 ## Rust Monorepo Template with Buck2
 
+### 环境准备
+
+目前本项目的测试环境是在 `Arch Linux` 上进行，除了默认需要安装的 Rust 工具链外，还需要安装的工具包括，
+
+```bash
+pacman -S wget lld zstd
+```
+
 ### 1. 安装 Buck2
 
 从 Buck2 Release 页面下载对应平台最新版本二进制文件， 解压后放移动到 `/usr/local/bin` 目录下，
@@ -17,6 +25,8 @@ $ sudo mv buck2 /usr/local/bin
 ```bash
 $ cargo install --locked --git https://github.com/facebookincubator/reindeer reindeer
 ```
+
+
 
 ### 3. 使用 Buck2 对 Template 中的 rust-buck2 仓库进行测试
 
