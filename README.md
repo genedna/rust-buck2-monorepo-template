@@ -23,6 +23,7 @@ $ cargo install --locked --git https://github.com/facebookincubator/reindeer rei
 ```bash
 $ git clone https://github.com/genedna/rust-buck2-monorepo-template.git
 $ cd rust-buck2-monorepo-template
+$ git clone https://github.com/facebook/buck2-prelude.git prelude
 $ reindeer --third-party-dir third-party vendor
 $ reindeer --third-party-dir third-party buckify
 $ buck2 build //third-party:rand#check
@@ -259,6 +260,7 @@ Tests finished: Pass 1. Fail 0. Fatal 0. Skip 0. Build failure 0
 - [使用 Buck2 编译构建 Rust 工程](https://maquanyi.com/articles/buck2-rust-hello-world)
 - [使用 Reindeer 生成 Rust 项目 BUCK](https://maquanyi.com/articles/buck2-rust-reindeer)
 - [使用 Buck2 和 Reindeer 构建 Rust Monorepo 工程](https://maquanyi.com/articles/buck2-rust-reindeer-monorepo)
+- [使用 Buck2 构建 Rust Monorepo 单元测试](https://maquanyi.com/articles/buck2-rust-monorepo-test)
 
 ### 2. References 
 
